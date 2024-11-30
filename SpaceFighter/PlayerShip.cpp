@@ -21,6 +21,7 @@ void PlayerShip::LoadContent(ResourceManager& resourceManager)
 void PlayerShip::Initialize(Level* pLevel, Vector2& startPosition)
 {
 	SetPosition(startPosition);
+	SetSpeed(400);
 }
 
 void PlayerShip::HandleInput(const InputState& input)

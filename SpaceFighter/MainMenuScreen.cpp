@@ -24,7 +24,8 @@ void MainMenuScreen::LoadContent(ResourceManager& resourceManager)
 	const int COUNT = 2;
 	MenuItem *pItem;
 	Font::SetLoadSize(20, true);
-	Font *pFont = resourceManager.Load<Font>("Fonts\\arial.ttf");
+	//Font *pFont = resourceManager.Load<Font>("Fonts\\arial.ttf");
+	Font* pFont = resourceManager.Load<Font>("Fonts\\roboto.tff");
 
 	SetDisplayCount(COUNT);
 
@@ -36,7 +37,7 @@ void MainMenuScreen::LoadContent(ResourceManager& resourceManager)
 		pItem = new MenuItem(text[i]);
 		pItem->SetPosition(Vector2(100, 100 + 50 * i));
 		pItem->SetFont(pFont);
-		pItem->SetColor(Color::BLUE);
+		pItem->SetColor(Color::PURPLE);
 		pItem->SetSelected(i == 0);
 		AddMenuItem(pItem);
 	}
@@ -44,7 +45,7 @@ void MainMenuScreen::LoadContent(ResourceManager& resourceManager)
 	// when "Start Game" is selected, replace the "SetRemoveCallback" delegate
 	// so that it doesn't quit the game (originally set in the constructor)
 	GetMenuItem(START_GAME)->SetOnSelect([this](){
-		SetOnRemove([this](){ AddScreen(new GameplayScreen()); });
+		SetOnRemove([this](){ AddScreen(new GameplayScreen(2)); });
 		Exit();
 	});
 
